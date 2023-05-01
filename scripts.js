@@ -6,37 +6,36 @@ const confirmBtn = document.querySelector("#confirm");
 const mayorBtn = document.querySelector("#mayor");
 const menorBtn = document.querySelector("#menor");
 const numberText = document.querySelector("#number");
+const title = document.querySelector("#title");
 
 
 //
-const low = 1;
-const high = 100;
-let confirm = false;
-let mayorOmenor;
+let low = 1;
+let high = 100;
+let numeroParaAdivinar = 50;
 
 //Listeners HTML
 start.addEventListener("click", () => {
-    confirm = true
+    container.classList.toggle("display");
+    start.classList.toggle("display");
 });
 
-mayorBtn.addEventListener("click", () =>{
-    mayorOmenor = - 1
-})
+mayorBtn.addEventListener("click", () => {
+    low = numeroParaAdivinar + 1;
+    numeroParaAdivinar = Math.floor((low + high) / 2);
+    numberText.innerText = numeroParaAdivinar;
+});
+ 
 menorBtn.addEventListener("click", () => {
-    mayorBtn = + 1
-})
-
-//Funciones
-const binarySearch= () => {
-
-    mayorOmenor = low * high / 2
-
-    number.innerText = mayorOmenor
+    high = numeroParaAdivinar - 1;
+    numeroParaAdivinar = Math.floor((low + high) / 2);
+    numberText.innerText = numeroParaAdivinar;
+});
 
 
-    while( confirm === false ){
-
-        
-    }
-    console.log("hola")
-}
+confirmBtn.addEventListener("click", () => {
+    title.innerText = "Tu numero es: ";
+    confirmBtn .classList.toggle("display");
+    mayorBtn.classList.toggle("display");
+    menorBtn.classList.toggle("display");
+});
